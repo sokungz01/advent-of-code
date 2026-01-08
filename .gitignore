@@ -1,0 +1,47 @@
+# Java compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# Build directories
+out/
+build/
+target/
+bin/
+
+# Eclipse and other IDE files
+.settings/
+.classpath
+.project
+
+# Gradle/Maven
+.gradle/
+gradle/
+.mvn/
+mvnw
+mvnw.cmd
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Misc
+*.log
+*.tmp
+
+# Keep node_modules if present out
+node_modules/
