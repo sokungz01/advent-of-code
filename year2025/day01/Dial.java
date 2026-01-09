@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Dial{
     public static void main(String[] args){
         List<Integer> dialedNumbers = getDialedNumbers();
-        System.out.println("Password:");
-        System.out.println(calculatePassword(50,dialedNumbers));
+        System.out.println("Pasword Part1: "+calculatePasswordPart1(50,dialedNumbers));
+        System.out.println("password method 0x434C49434B: "+calculatePasswordPart2(50,dialedNumbers));
     }
 
     public static List<Integer> getDialedNumbers() {
@@ -46,7 +46,7 @@ public class Dial{
         }
     }
 
-    public static int calculatePassword(Integer startNumber, List<Integer> dialedNumbers) {
+    public static int calculatePasswordPart1(Integer startNumber, List<Integer> dialedNumbers) {
         int password = startNumber;
         System.out.printf("%d \n",password);
         int zeros = 0;
@@ -56,6 +56,21 @@ public class Dial{
             if (password == 0) {
                 zeros++;
             }
+        }
+        return zeros;
+    }
+
+    public static int calculatePasswordPart2(int startNumber, List<Integer> dialedNumbers) {
+        int pos = ((startNumber % 100) + 100) % 100;
+        int zeros = 0;
+        for (int delta : dialedNumbers) {
+            int steps = Math.abs(delta);
+            if (steps > 0) {
+                int k0 = (delta > 0) ? (100 - pos) % 100 : pos % 100;
+                if (k0 == 0) k0 = 100;
+                if (steps >= k0) zeros += 1 + (steps - k0) / 100;
+            }
+            pos = ((pos + delta) % 100 + 100) % 100;
         }
         return zeros;
     }
